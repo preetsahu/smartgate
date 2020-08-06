@@ -24,6 +24,12 @@
             <h3>Administrator Registration to <br></h3><h4>Smart Gate System</h4>
             <p>Create account to see it in action.</p>
             <form id="createForm" class="m-t" method="post" action="<?=base_url('Register-Admin') ?>" role="form">
+                <div>
+					<p style="font-size:15px;" class="alert-danger">
+                        <?= $this->session->flashdata('success'); ?>
+                        <?= $this->session->flashdata('err'); ?>
+                    </p>
+				</div>
                 <div class="form-group">
                     <input type="text" id="finame" class="form-control" placeholder="First Name" name="fname" required="">
                 </div>

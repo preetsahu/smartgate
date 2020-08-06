@@ -5,6 +5,13 @@ include 'layout/header.php';
 
       $MOB=$this->session->userdata('MOB');
     
+      foreach($sMails as $s)
+      {
+          $sub=$s->MAIL_SUBJECT;
+          $content=$s->MAIL_CONTENT;
+          $SenderName=$s->FIRST_NAME.$s->LAST_NAME;
+          $sender=$SenderName.'||' .$s->EMAIL_ID;
+      }
 ?>
 <link href="<?=base_url()?>assets/admin/css/plugins/iCheck/custom.css" rel="stylesheet">
 
@@ -57,39 +64,21 @@ include 'layout/header.php';
                     <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </a>
                 </div>
                 <h2>
-                    View Message
+                   Message From:<h3> <?=$s->FIRST_NAME.$s->LAST_NAME?></h3>
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">
-
-
                     <h3>
-                        <span class="font-normal">Subject: </span>Aldus PageMaker including versions of Lorem Ipsum.
+                        <span class="font-normal">Subject: </span><?=$sub?>
                     </h3>
                     <h5>
-                        <span class="pull-right font-normal">10:15AM 02 FEB 2014</span>
-                        <span class="font-normal">From: </span>alex.smith@corporation.com
+                        <span class="pull-right font-normal"><?=$date?></span>
+                        <span class="font-normal">From: </span><?=$sender?>
                     </h5>
                 </div>
             </div>
                 <div class="mail-box">
-
-
                 <div class="mail-body">
-                    <p>
-                        Hello Jonathan!
-                        <br/>
-                        <br/>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-                        took a galley of type and scrambled it to make a type <strong>specimen book.</strong>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-                        essentially unchanged.
-                        </p>
-                    <p>
-                        It was popularised in the 1960s with the release <a href="#" class="text-navy">Letraset sheets</a>  containing Lorem Ipsum passages, and more recently with desktop publishing software
-                        like Aldus PageMaker including versions of Lorem Ipsum.
-                    </p>
-                    <p>
-                        There are many variations of passages of <strong>Lorem Ipsum</strong>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of.
-                    </p>
+                    <p><?=$content?></p>
                 </div>
                     <div class="mail-attachment">
                         <p>
@@ -98,7 +87,6 @@ include 'layout/header.php';
                             |
                             <a href="#">View all images</a>
                         </p>
-
                         <div class="attachment">
                             <div class="file-box">
                                 <div class="file">
@@ -115,13 +103,11 @@ include 'layout/header.php';
                                         </div>
                                     </a>
                                 </div>
-
                             </div>
                             <div class="file-box">
                                 <div class="file">
                                     <a href="#">
                                         <span class="corner"></span>
-
                                         <div class="image">
                                             <img alt="image" class="img-responsive" src="img/p1.jpg">
                                         </div>
@@ -131,14 +117,12 @@ include 'layout/header.php';
                                             <small>Added: Jan 6, 2014</small>
                                         </div>
                                     </a>
-
                                 </div>
                             </div>
                             <div class="file-box">
                                 <div class="file">
                                     <a href="#">
                                         <span class="corner"></span>
-
                                         <div class="image">
                                             <img alt="image" class="img-responsive" src="img/p2.jpg">
                                         </div>
@@ -154,20 +138,16 @@ include 'layout/header.php';
                         </div>
                         </div>
                         <div class="mail-body text-right tooltip-demo">
-                                <a class="btn btn-sm btn-white" href="mail_compose.html"><i class="fa fa-reply"></i> Reply</a>
+                                <a class="btn btn-sm btn-white" href="#"><i class="fa fa-reply"></i> Reply</a>
                                 <a class="btn btn-sm btn-white" href="mail_compose.html"><i class="fa fa-arrow-right"></i> Forward</a>
                                 <button title="" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Print" class="btn btn-sm btn-white"><i class="fa fa-print"></i> Print</button>
                                 <button title="" data-placement="top" data-toggle="tooltip" data-original-title="Trash" class="btn btn-sm btn-white"><i class="fa fa-trash-o"></i> Remove</button>
                         </div>
                         <div class="clearfix"></div>
-
-
                 </div>
             </div>
         </div>
         </div>
-        
-   
 <!-- -------------------------------------------------------------------------------------------------------------------------- -->
 
 <?php include 'layout/rightSidebar.php' ?>

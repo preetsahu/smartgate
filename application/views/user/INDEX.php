@@ -29,6 +29,11 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/user/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/user/css/main.css">
 <!--===============================================================================================-->
+
+   <!--Import Google Icon Font-->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 </head>
 <body>
 	
@@ -52,11 +57,19 @@
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 					
+					<div>
+					<p style="font-size:15px;text-align:center" class="alert-danger">
+                        <?= $this->session->flashdata('success'); ?>
+                        <?= $this->session->flashdata('err'); ?>
+                    </p>
+					</div>
+
 					<div class="text-right p-t-8 p-b-31">
-						<a href="#">
+						<a href="<?=base_url('Forgot-Password')?>">
 							Forgot password?
 						</a>
 					</div>
+
 					
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
@@ -70,19 +83,19 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 						<div class="login100-form-bgbtn"></div>
-							<a class="login100-form-btn" href="pgOTP.php">Login Using OTP</a> 
+							<a class="login100-form-btn" href="<?=base_url('Login-Using-OTP')?>">Login Using OTP</a> 
 						</div>
 					</div>
 
 					<div class="txt1 text-center p-t-54 p-b-20">
 						<span>
-							Or <a href="<?=base_url('User-Registration')?>"><h4>Sign Up</h4></a> 
+							Or <a href="<?=base_url('User-Registration')?>"><h4>Sign Up here</h4></a> 
 							<!-- <br>Using -->
 						</span>
 					</div>
 
-					<!-- <div class="flex-c-m">
-						<a href="#" class="login100-social-item bg1">
+					<div class="flex-c-m">
+						<!-- <a href="#" class="login100-social-item bg1">
 							<i class="fa fa-facebook"></i>
 						</a>
 
@@ -92,8 +105,15 @@
 
 						<a href="#" class="login100-social-item bg3">
 							<i class="fa fa-google"></i>
-						</a>
-					</div> -->
+						</a> -->
+						<!-- <div class="footer">
+							<div class="pull-right">
+							</div>
+							<div>
+							<strong>Copyright @2020</strong> Smart Gate Entrance Nit Raipur 
+							</div>
+						</div> -->
+					</div>
 				</form>
 			</div>
 		</div>
@@ -102,7 +122,16 @@
 
     <div id="dropDownSelect1"></div>
 
-
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
 	
 <!--===============================================================================================-->
 	<script src="<?=base_url()?>assets/user/vendor/jquery/jquery-3.2.1.min.js"></script>

@@ -214,7 +214,9 @@
             cache: false,
             success: function(data) {
                 if (data.success == true) {
-                    alert("You have successfully logged in!");
+                    alert(data.outMsg);
+                    alert(data.out);
+                    //alert("You have successfully logged in!");
                     self.location.replace('<?=base_url('QR-Scanner') ?>');
                 } else {
                     alert("The credentials not match!");
@@ -372,7 +374,7 @@
                 Smart Gate <br> QR Code scanner
             </p>
             <ul style="list-style-type:none;">
-                <li style="text-align:center;"><a style="font-size:14px;" class="btn btn-primary btn-sm" href="<?=base_url('QR-Scanner')?>"><i style="margin-right:5px;" class="fa fa-camera"></i>Scan</a></li>
+                <li style="text-align:center;"><a class="btn btn-success btn-sm" style="font-size:14px;" href="<?=base_url('QR-Scanner')?>"><i style="margin-right:5px;" class="fa fa-camera"></i>Reload Scanner</a></li>
                 <!-- <li><a href="<?=base_url('User-Login-View')?>">Back</a></li> -->
             </ul>
         </div>

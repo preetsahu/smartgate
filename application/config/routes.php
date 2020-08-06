@@ -21,7 +21,7 @@ $route['Admin-Login']='adminController/AdminController/ChkLogin';
 $route['Log-out']='adminController/AdminController/AdminLogout';
 
 $route['View-User-Activities']='adminController/AdminController/viewUsrActivities';
-$route['View-Students']='adminController/AdminController/viewStudentPage';
+$route['Look-Students']='adminController/AdminController/viewStudentPage';
 $route['View-Students-Availibility']='adminController/AdminController/availStudentPage';
 $route['Student-Activity-View']='adminController/AdminController/studentActivityView';
 $route['Staff-Activity-View']='adminController/AdminController/staffActivityView';
@@ -29,8 +29,10 @@ $route['Create-Admin']='adminController/AdminController/createAdmin';
 $route['View-Staff']='adminController/AdminController/viewStaffpage';
 $route['View-Staffs-Availibility']='adminController/AdminController/availStaffpage';
 
-$route['View-Student-Report']='adminController/AdminController/generate_student_report';
+// $route['View-Student-Report']='adminController/AdminController/generate_student_report';
+$route['View-Student-Report']='pdfController/generate_student_report';
 $route['View-Staff-Report']='adminController/AdminController/generate_pdf';
+$route['Activate-User']='adminController/AdminController/activateNewUser';
 /////////////////////////////////////////////--Admin Profile Controller--/////////////////////////////////////////////////////
 ////////////////////////////////////////////---------end----------////////////////////////////////////////////////////////////
 
@@ -51,6 +53,7 @@ $route['Register-User']='userController/UserController/registerUser';
 $route['Student-Profile']='userController/UserController/studentProfileView';
 $route['Staff-Profile']='userController/UserController/staffProfileView';
 $route['View-Faculties']='userController/UserController/FacultiesView';
+$route['View-Students']='userController/UserController/studentsView';
 $route['Mail-Box']='userController/UserController/mailBoxView';
 $route['eMail']='userController/UserController/EmailView';
 $route['Compose-Email']='userController/UserController/composeEmailView';
@@ -58,9 +61,19 @@ $route['Compose-Email']='userController/UserController/composeEmailView';
 $route['Profile']='userController/UserController/Profile';
 $route['QR-Scanner']='userController/UserController/QRscanner';
 $route['Scan-QR-User']='userController/UserController/authenticateScannedQR';
+$route['Update-Student-Info']="userController/UserController/updateStudentInfo";
+$route['Update-Staff-Info']="userController/UserController/updateStaffInfo";
+$route['error']='userController/UserController/errorpage';
 
 ////////////////////////////////////////////---------end----------///////////////////////////////////////////////////////////
 /////////////////////////////////////////////--User Profile--///////////////////////////////////////////////////////////////
 
 $route['Scan-QR']='QRcontroller/index';
+
+$route['Login-Using-OTP']='OTPcontroller/otp';
+// $route['verification-form']='OTPcontroller/verificationform';
+$route['Forgot-Password']='OTPcontroller/forgotPassword';
+$route['Update-Password']='OTPcontroller/updatePasswordView';
+
+$route['Email-us']='EmailController/emailTest'
 ?>

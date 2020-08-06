@@ -1,57 +1,86 @@
-
 <?php
-
-include 'layout/header.php';
-
-      $MOB=$this->session->userdata('MOB');
-    
-
+    include 'layout/header.php';
+    $MOB=$this->session->userdata('MOB');
 ?>
-        <div class="wrapper wrapper-content animated fadeInRight">
+
+<style type="text/css">
+
+    @media(max-width:700px)
+    {
+        .tabo thead
+        {
+            display:none;
+        }
+        .tabo ,.tabo tbody, .tabo tr,.tabo td
+        {
+            display:block;
+            width:100%;
+        }
+        .tabo tr
+        {
+            margin-bottom:1px;
+            border-bottom:5px solid #1AB394;
+            border-top:5px solid #1AB394;
+        }
+        .tabo td
+        {
+            text-align:right;
+            padding-left:50%;
+            postion:relative;
+        }
+        .tabo td:before
+        {
+            content:attr(data-label);
+            position:absolute;
+            left:25px;
+            width:50%;
+            padding-left:15px;
+            font-size:12px;
+            font-weight:bold;
+            text-align:left;
+        }
+    }
+
+</style>
+
+<div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
                 <div class="col-lg-12">
                     
                     <div class="ibox float-e-margins">
-                        <div class="ibox-title">
+                        <div class="ibox-title iboxColor">
                             <h5>View System Admins </h5>
                             <div class="ibox-tools">
-                                <a class="collapse-link">
+                                <a class="collapse-link" style="color:white">
                                     <i class="fa fa-chevron-up"></i>
                                 </a>
-                                <ul class="dropdown-menu dropdown-user">
-                                    <li><a href="#">Config option 1</a>
-                                    </li>
-                                    <li><a href="#">Config option 2</a>
-                                    </li>
-                                </ul>
-                                <a class="close-link">
+                                <a class="close-link" style="color:white">
                                     <i class="fa fa-times"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="ibox-content">
                             <div class="row">
-                                <div class="col-sm-4">
+                                <div class="col-sm-12">
                                     <div class="input-group">
                                         <input type="text" id="admSearch" name="txtAdm" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
-                                        <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span>
+                                        <button type="button" class="btn btn-sm btn-success"> Go!</button> </span>
                                     </div>
                                 </div>
                             </div>
                             <div class="alert alert-success" style="display:none;">
                             <!-- Display Dynamic Message -->
                             </div>
-                            <div class="table-responsive">
-                                <table class="table table-striped">
+                            <div class="">
+                                <table class="table table-striped tabo">
                                     <thead>
                                     <tr>
                                         <th>User Name</th>
                                         <th>Name</th>
                                         <!-- <th>Email</th> -->
-                                        <th>Phone</th>
+                                        <!-- <th>Phone</th> -->
                                         <th>Status</th>
                                         <th>Action</th>
-                                        
                                     </tr>
                                     </thead>
                                     <tbody id="admDetails">
@@ -123,11 +152,11 @@ include 'layout/header.php';
                                for(i=0; i<data.length; i++)
                                {
                                    html +='<tr>'+
-                                   '<td>'+data[i].ADM_ID+'</td>'+
-                                       '<td>'+data[i].ADM_FIRST_NAME+' '+data[i].ADM_LAST_NAME+'</td>'+
-                                       '<td>'+data[i].ADM_CONTACT+'</td>'+
-                                       '<td><button class="btn btn-sm btn-primary" data-id="'+ i +'" style="margin-right:5px;" data="'+data[i].ADM_ID+'" state="'+data[i].ADM_STATUS+'">'+data[i].ADM_STATUS+'</button></td>'+
-                                       '<td><a class="btn btn-sm btn-success adm-update"  style="margin-right:5px;" data="'+data[i].ADM_ID+'" href="#">Update</a><a class="btn btn-sm btn-danger adm-delete" data="'+data[i].ADM_ID+'" href="#">Delete</a></td>'+
+                                   '<td data-label="username">'+data[i].ADM_ID+'</td>'+
+                                       '<td data-label="Admin Name">'+data[i].ADM_FIRST_NAME+' '+data[i].ADM_LAST_NAME+'</td>'+
+                                    //    '<td data-label="Contact">'+data[i].ADM_CONTACT+'</td>'+
+                                       '<td data-label="Status"><button class="btn btn-sm" style="background-color:#00A65A;color:white;margin-right:5px;" data-id="'+ i +'" data="'+data[i].ADM_ID+'" state="'+data[i].ADM_STATUS+'">'+data[i].ADM_STATUS+'</button></td>'+
+                                       '<td data-label="Action"><a class="btn btn-sm btn-success adm-update"  style="margin-right:5px;" data="'+data[i].ADM_ID+'" href="#">Update</a><a class="btn btn-sm btn-danger adm-delete" data="'+data[i].ADM_ID+'" href="#">Delete</a></td>'+
                                        '</tr>';
                                }
                                $('#admDetails').html(html);

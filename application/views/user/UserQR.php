@@ -23,7 +23,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
                     <div class="ibox float-e-margins">
-                            <div class="ibox-title">
+                            <div class="ibox-title" style="background-color:#3C8DBC;color:white">
                                 <h5><?=$user?> : <?=$Name?></h5>
                             </div>
                             <div class="ibox-title">

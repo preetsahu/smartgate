@@ -38,6 +38,13 @@
 						Registration
 					</span>
 
+					<div>
+						<p style="font-size:15px;" class="alert-warning">
+							<?= $this->session->flashdata('success'); ?>
+							<?= $this->session->flashdata('err'); ?>
+						</p>
+					</div>
+
 					<div class="form-group">
 					<label for="exampleFormControlSelect1">Registration Type</label>
 						<select name="regType" class="form-control" id="userType">
@@ -71,7 +78,9 @@
 						<input class="input100" type="password" name="txtPass" placeholder="Type your password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
-			
+
+					
+
 					<div class="container-login100-form-btn" style="margin-top:20px;">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
@@ -82,9 +91,9 @@
 					</div>
 
 					<div class="txt1 text-center p-t-54 p-b-20">
-						<span>
-							Already Registered...<br>
-							<a class="h2" href="<?=base_url('User-Login-View')?>" >Login here..</a>
+						<span class="h5">
+							Already Registered ?
+							<a class="h5" style="color:blue;" href="<?=base_url('User-Login-View')?>" >Login here..</a>
 
 						</span>
 					</div>
@@ -128,6 +137,10 @@
 	<script src="<?=base_url()?>assets/user/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="<?=base_url()?>assets/user/js/main.js"></script>
+	<script>
+		setTimeout(function() {
+		$('#msgDiv').fadeIn().delay(4000).fadeOut('slow');
+	</script>
 
 </body>
 </html>

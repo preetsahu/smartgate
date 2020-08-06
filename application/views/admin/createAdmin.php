@@ -26,16 +26,15 @@
                     <div class="form-group">
                             <!-- <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> Agree the terms and policy </label></div> -->
                     </div>
-                    <button type="submit" id="butsave" class="btn btn-primary block full-width m-b">Register</button>
+                    <button type="submit" id="butsave" class="btn btn-success block full-width m-b">Register</button>
                 </form>
         </div>
         </div>
-  
 <!---------------------------------------------------------------------------------------------------------------------------- -->
 
 <?php include 'layout/rightSidebar.php' ?>
 <!------------------------------------------------------------------------------------------------------------------------------ -->
-
+</div>
 
 <!------------------------------------------------------------------------------------------------------------------------------ -->
 

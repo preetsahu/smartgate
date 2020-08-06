@@ -53,6 +53,47 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
 ?>
+<style type="text/css">
+    @media(max-width:700px)
+    {
+        .tabo thead
+        {
+            display:none;
+        }
+        .tabo ,.tabo tbody, .tabo tr,.tabo td
+        {
+            display:block;
+            width:100%;
+            
+        }
+        .tabo tr
+        {
+            margin-bottom:15px;
+        
+        }
+        .tabo td
+        {
+            text-align:right;
+            padding-left:50%;
+            postion:relative;
+            
+        }
+        .tabo td:before
+        {
+            content:attr(data-label);
+            position:absolute;
+            left:25px;
+            width:80%;
+            padding-left:15px;
+            font-size:12px;
+            font-weight:bold;
+            text-align:left;
+            
+        }
+    }
+
+</style>
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="wrapper wrapper-content animated fadeInUp">
@@ -62,7 +103,7 @@
                                 <div class="col-lg-12">
                                     <div class="m-b-md">
                                     
-                                        <a href="#" class="btn btn-white btn-xs pull-right">Update</a>
+                                        <a href="<?=base_url('Update-Student-Info')?>" class="btn btn-success btn-xs pull-right">Update</a>
                                         <h2><?=$name?></h2>
                                         
                                         <!-- Status:<span class="label label-primary">ACTIVE</span> -->
@@ -90,23 +131,23 @@
                                         <dt>Email:</dt> <dd><a href="#" class="text-navy"><?=$email?></a> </dd>
                                         <dt>Contact:</dt> <dd> <?=$MOB?> </dd>
                                     </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>Profile:</dt>
+                                        <dd>
+                                            <div class="progress progress-striped active m-b-sm">
+                                                <div style="width:<?=$per?>%;" class="progress-bar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><?=$per?>%</div>
+                                            </div>
+                                            <small>Profile completed in <strong><?=$per?>%</strong></small>
+                                        </dd>
+                                    </dl>
                                 </div>
                                 <div class="col-lg-5" id="cluster_info">
                                     <dl class="dl-horizontal" >
                                         <dt>Student ID:</dt> <dd><?=$studentId?></dd>
                                         <dt>Email:</dt> <dd><?=$email?></dd>
                                         <dt>Reg.ID:</dt> <dd> <?=$regID?> </dd>
-                                        
                                     </dl>
-                                    <dl class="dl-horizontal">
-                                        <dt>Profile:</dt>
-                                        <dd>
-                                            <div class="progress progress-striped active m-b-sm">
-                                                <div style="width: <?=$per?>%;" class="progress-bar"></div>
-                                            </div>
-                                            <small>Profile completed in <strong><?=$per?>%</strong></small>
-                                        </dd>
-                                    </dl>
+                                   
                                 </div>
                             </div>
                             <div class="row m-t-sm">
@@ -201,7 +242,7 @@
                                                 </div> -->
                                             </div>
                                             <div class="tab-pane active" id="tab-1">
-                                                <table class="table table-striped">
+                                                <table class="table table-striped tabo">
                                                     <thead>
                                                     <tr>
                                                         <th>Status</th>
@@ -221,24 +262,53 @@
                                                         $date2=date_create("$sca->OUT_DATE_TIME");
                                                         $dateFormat=date_format($date1,"d-M-Y");
                                                         $inTime=date_format($date1,"H:i:s:A");
+                                                        
                                                         $outTime=date_format($date2,"g:i:s:A");
-                                                        $diff=date_diff($date1,$date2);
-                                                        ?>
+                                                                                
+                                // Change the line below to your timezone!
+                                $timezone =date_default_timezone_set('Asia/Kolkata');
+                                //    echo "The current server timezone is: " . $timezone;
+                                    $date = date('Y-m-d H:i:s', time());
+                                                        if($status=='IN')
+                                                        {
+                                                            $outTime="  ";
+                                                            $diff=date_diff($date1,$date2);
+                                                        }
+                                                        else
+                                                        {
+                                                            $diff=date_diff($date1,$date2);
+                                                        }
+                                                        // if($outTime=='12:00:00:AM')
+                                                        //     $outTime="  ";
+                                                        // ?>
                                                     <tr>
-                                                        <td>
-                                                            <span class="label label-primary"><i class="fa fa-check"></i> </span>
+                                                        <td data-label="Status">
+                                                            <?php 
+                                                                if($status=='IN')
+                                                                {
+                                                            ?>
+                                                            <span class="label label-primary"><i class="fa fa-check"><?=$status?></i> </span>
+                                                            <?php
+                                                            }
+                                                            else
+                                                            {
+                                                                ?>
+                                                            <span class="label label-danger"><i class="fa fa-check"><?=$status?></i> </span>
+                                                            <?php
+                                                            }
+                                                            ?>
                                                         </td>
-                                                        <td>
+                                                        <td data-label="Date">
                                                             <?=$dateFormat ?>
                                                         </td>
-                                                        <td>
+                                                        <td data-label="In Time">
                                                             <?=$inTime ?>
                                                         </td>
-                                                        <td>
+                                                        <td style="padding: 15px;margin-bottom:10px;" data-label="Out Time">
                                                             <?=$outTime ?>
                                                         </td>
-                                                        <td>
-                                                        <?=$diff->format("%h hour %I minutes %s seconds");?>
+                                                        <td data-label="Time Spent">
+                                                        <?=$diff->format("%h hour %I min ");?>
                                                         </td>
                                                     </tr>
 

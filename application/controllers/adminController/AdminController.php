@@ -89,18 +89,27 @@ class AdminController extends CI_Controller
         $lname = $this->input->post('lname');
         $email = $this->input->post('email');
         $pass = $this->input->post('pass');
-
             $pass = md5($pass);
-            $res = $this->AdminModel->AdminRegistration($fname,$lname,$email,$pass);
-            if($res>0)
+            $chkDuplicate=$this->AdminModel->chkAdminUsrExistance($email);
+            $chkFlag=$chkDuplicate->num_rows();
+            if($chkFlag>0)
             {
-                $this->session->set_flashdata('success',"Registered successfully");
-                redirect('Admin-Login-View');
+                $this->session->set_flashdata('err',"This credential are already registered to system !");
+                redirect('Register-Admin-View');
             }
             else
             {
-                $this->session->set_flashdata('err',"Something went wrong please try again");
-                redirect('Register-Admin-View');
+                $res = $this->AdminModel->AdminRegistration($fname,$lname,$email,$pass);
+                if($res>0)
+                {
+                    $this->session->set_flashdata('success',"Registered successfully");
+                    redirect('Admin-Login-View');
+                }
+                else
+                {
+                    $this->session->set_flashdata('err',"Something went wrong please try again");
+                    redirect('Register-Admin-View');
+                }
             }
     }
 
@@ -155,6 +164,17 @@ class AdminController extends CI_Controller
             $msg['success']=true;
         }
         echo json_encode($msg);
+    }
+
+    public function removeRegUser()
+    {
+         ///ajax request
+         $res=$this->AdminModel->removeRegUserModel();
+         $msg['success']=false;
+         if($res){
+             $msg['success']=true;
+         }
+         echo json_encode($msg);
     }
 
     public function ChangeAdminStatus()
@@ -219,6 +239,7 @@ class AdminController extends CI_Controller
         echo json_encode($res);
     }
 
+   
     public function staffActivityView()
     {
         $str=$this->input->get('regID');
@@ -355,7 +376,7 @@ public function generate_pdf()
         $str=$this->input->get('SID');
         
         if(!$str)
-            $this->load->view('admin/tudentAvailability');
+            $this->load->view('admin/studentAvailability');
         else
         {
             $student['StudentDetails']=$this->AdminModel->GetStudentByIDModel($str)->result();
@@ -518,6 +539,31 @@ public function generate_pdf()
       $usrType = $this->input->post('id',TRUE);
       $data=$this->AdminModel->GetDepartmentModel()->result();
       echo json_encode($data);
+    }
+
+    public function activateNewUser()
+    {
+        $this->load->view('admin/ActivateUsers');
+    }
+    
+    public function getNewUser()
+    {
+        $usrType = $this->input->post('utype',TRUE);
+        $str = $this->input->post('str',TRUE);
+        
+        $data=$this->AdminModel->getNewUserModel($usrType,$str)->result();
+        echo json_encode($data);
+    }
+
+    public function ChangeUserStatus()
+    {
+         ///ajax request
+         $res=$this->AdminModel->ChangeUserStatusModel();
+         $msg['success']=false;
+         if($res){
+             $msg['success']=true;
+         }
+         echo json_encode($msg);
     }
 
     public function GetCourse()

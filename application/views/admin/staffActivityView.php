@@ -13,7 +13,8 @@
           $email=$sa->EMAIL_ID;
           $MOB=$sa->MOBILE_NUMBER;
           $regID=$sa->REGISTRATION_ID;
-         
+          $status=$sa->STATUS;
+          $pic=$sa->IMAGE;
       }
       $count=0;
       if($name=='') {$count++;}
@@ -23,6 +24,8 @@
       if($email==''){$count++;}
       if($MOB==''){$count++;}
       if($regID==''){$count++;}
+      IF($status==''){$count++;}
+      if ($pic=='') {$count++; }
       if($count!=0)
       {
           $per=round(100-(($count)/9)*100);
@@ -44,18 +47,15 @@
                                 <div class="col-lg-12">
                                     <div class="m-b-md">
                                     <?php
-                                        if($mail=='preetsahu17@gmail.com')
-                                        {
-                                            ?>
-                                       
+                                      ?>
                                         <a href="#" class="btn btn-white btn-xs pull-right">Update</a>
                                         <h2><?=$name?></h2>
                                         <?php
-                                        }
+                                       
                                         ?>
                                     </div>
                                     <dl class="dl-horizontal">
-                                        <dt>Status:</dt> <dd><span class="label label-primary">Active</span></dd>
+                                        <dt>Status:</dt> <dd><span class="label label-primary"><?=$status?></span></dd>
                                     </dl>
                                 </div>
                             </div>

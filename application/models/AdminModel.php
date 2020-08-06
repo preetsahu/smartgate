@@ -16,7 +16,12 @@ class AdminModel extends CI_Model
         $rs = $this->db->query($sql);
         return $rs;
     }
-
+    public function chkAdminUsrExistance($email)
+    {
+      $sql = "SELECT `ADM_EMAIL` FROM `tblsystemadmin` WHERE `ADM_EMAIL`='$email';";
+      $rs = $this->db->query($sql);
+      return $rs;
+    }
     public function GetUserDetailsModel($StudentID)
     {
       $sql="SELECT pre.REGISTRATION_ID,st.STUDENT_ID,st.FIRST_NAME,st.LAST_NAME,dt.DEPARTMENT_NAME,st.MOBILE_NUMBER ,pre.PRESENCE_STATUS,pre.IN_DATE_TIME,pre.OUT_DATE_TIME FROM (SELECT `REGISTRATION_ID` ,`PRESENCE_STATUS`,`OUT_DATE_TIME`, MAX(IN_DATE_TIME) AS IN_DATE_TIME FROM `tblpeoplepresence` GROUP BY `REGISTRATION_ID`) as pre INNER JOIN `tblstudent` st ON pre.REGISTRATION_ID=st.REGISTRATION_ID INNER JOIN `tbldepartment` dt ON st.DEPARTMENT_ID=dt.DEPARTMENT_ID INNER JOIN `registereduser` reguser ON reguser.REGISTRATION_ID=pre.REGISTRATION_ID WHERE st.STUDENT_ID='$StudentID';";
@@ -131,18 +136,47 @@ class AdminModel extends CI_Model
       return $rs;
     }
 
+    public function getNewUserModel($usrType,$str)
+    {
+      if($usrType=='' && $str=='')
+      {
+        $sql="SELECT `REGISTRATION_ID`, `REG_USR_FIRSTNAME`, `REG_USR_LASTNAME`, ru.`REGISTRATION_TYPE`,`REG_USR_CONTACT`,`REG_USER_QR`, `STATUS`,rt.TYPE_NAME FROM `registereduser` ru INNER JOIN `registeredusertype` rt ON rt.`REGISTRATION_TYPE`=ru.`REGISTRATION_TYPE`  order by ru.STATUS desc";
+        $rs=$this->db->query($sql);
+        return $rs;
+      }
+      elseif($usrType!='' && $str=='')
+      {
+        $sql="SELECT `REGISTRATION_ID`, `REG_USR_FIRSTNAME`, `REG_USR_LASTNAME`, ru.`REGISTRATION_TYPE`,`REG_USR_CONTACT`,`REG_USER_QR`, `STATUS`,rt.TYPE_NAME FROM `registereduser` ru INNER JOIN `registeredusertype` rt ON rt.`REGISTRATION_TYPE`=ru.`REGISTRATION_TYPE` WHERE  ru.REGISTRATION_TYPE='$usrType'  order by ru.STATUS desc";
+        $rs=$this->db->query($sql);
+        return $rs;
+      }
+      elseif($usrType!='' && $str!='')
+      {
+        $sql="SELECT `REGISTRATION_ID`, `REG_USR_FIRSTNAME`, `REG_USR_LASTNAME`, ru.`REGISTRATION_TYPE`,`REG_USR_CONTACT`,`REG_USER_QR`, `STATUS`,rt.TYPE_NAME FROM `registereduser` ru INNER JOIN `registeredusertype` rt ON rt.`REGISTRATION_TYPE`=ru.`REGISTRATION_TYPE` WHERE  ru.REGISTRATION_TYPE='$usrType' and (ru.REGISTRATION_ID LIKE '%".$str."%' or ru.REG_USR_FIRSTNAME LIKE '%".$str."%' OR ru.REG_USR_CONTACT LIKE '%".$str."%') order by ru.STATUS desc";
+        $rs=$this->db->query($sql);
+        return $rs;
+      }
+      elseif($usrType=='' && $str!='')
+      {
+        $sql="SELECT `REGISTRATION_ID`, `REG_USR_FIRSTNAME`, `REG_USR_LASTNAME`, ru.`REGISTRATION_TYPE`,`REG_USR_CONTACT`,`REG_USER_QR`, `STATUS`,rt.TYPE_NAME FROM `registereduser` ru INNER JOIN `registeredusertype` rt ON rt.`REGISTRATION_TYPE`=ru.`REGISTRATION_TYPE` WHERE ru.REGISTRATION_ID LIKE '%".$str."%' or ru.REG_USR_FIRSTNAME LIKE '%".$str."%' OR ru.REG_USR_CONTACT LIKE '%".$str."%' order by ru.STATUS desc";
+        $rs=$this->db->query($sql);
+        return $rs;
+      }
+    
+    }
+
     public function getAllStudentDetailsModel()
     {
       $str=$this->input->post('str',TRUE);
       if($str=='')
       {
-        $sql="SELECT st.REGISTRATION_ID,st.STUDENT_ID,st.FIRST_NAME,st.LAST_NAME,dt.DEPARTMENT_NAME,st.MOBILE_NUMBER ,st.EMAIL_ID,st.COURSE_YEAR,st.SEMESTER,c.COURSE_NAME FROM`tblstudent`  st INNER JOIN `tbldepartment` dt ON st.DEPARTMENT_ID=dt.DEPARTMENT_ID INNER JOIN `registereduser` reguser ON reguser.REGISTRATION_ID=st.REGISTRATION_ID INNER JOIN `tblcourse` c ON c.COURSE_ID=st.COURSE_ID;";
+        $sql="SELECT st.REGISTRATION_ID,reguser.IMAGE,st.STUDENT_ID,st.FIRST_NAME,st.LAST_NAME,dt.DEPARTMENT_NAME,st.MOBILE_NUMBER ,st.EMAIL_ID,st.COURSE_YEAR,st.SEMESTER,c.COURSE_NAME FROM`tblstudent`  st INNER JOIN `tbldepartment` dt ON st.DEPARTMENT_ID=dt.DEPARTMENT_ID INNER JOIN `registereduser` reguser ON reguser.REGISTRATION_ID=st.REGISTRATION_ID INNER JOIN `tblcourse` c ON c.COURSE_ID=st.COURSE_ID;";
         $rs=$this->db->query($sql);
         return $rs;
       }
       else 
       {
-        $sql="SELECT st.REGISTRATION_ID,st.STUDENT_ID,st.FIRST_NAME,st.LAST_NAME,dt.DEPARTMENT_NAME,st.MOBILE_NUMBER ,st.EMAIL_ID,st.COURSE_YEAR,st.SEMESTER,c.COURSE_NAME FROM`tblstudent`  st INNER JOIN `tbldepartment` dt ON st.DEPARTMENT_ID=dt.DEPARTMENT_ID INNER JOIN `registereduser` reguser ON reguser.REGISTRATION_ID=st.REGISTRATION_ID INNER JOIN `tblcourse` c ON c.COURSE_ID=st.COURSE_ID WHERE st.FIRST_NAME LIKE '%".$str."%' OR st.STUDENT_ID LIKE '%".$str."%' OR st.MOBILE_NUMBER LIKE '%".$str."%' OR dt.DEPARTMENT_NAME LIKE '%".$str."%';";
+        $sql="SELECT st.REGISTRATION_ID,reguser.IMAGE,st.STUDENT_ID,st.FIRST_NAME,st.LAST_NAME,dt.DEPARTMENT_NAME,st.MOBILE_NUMBER ,st.EMAIL_ID,st.COURSE_YEAR,st.SEMESTER,c.COURSE_NAME FROM`tblstudent`  st INNER JOIN `tbldepartment` dt ON st.DEPARTMENT_ID=dt.DEPARTMENT_ID INNER JOIN `registereduser` reguser ON reguser.REGISTRATION_ID=st.REGISTRATION_ID INNER JOIN `tblcourse` c ON c.COURSE_ID=st.COURSE_ID WHERE st.FIRST_NAME LIKE '%".$str."%' OR st.STUDENT_ID LIKE '%".$str."%' OR st.MOBILE_NUMBER LIKE '%".$str."%' OR dt.DEPARTMENT_NAME LIKE '%".$str."%';";
         $rs=$this->db->query($sql);
         return $rs;
       }
@@ -153,13 +187,13 @@ class AdminModel extends CI_Model
       $str=$this->input->post('str',TRUE);
       if($str=='')
       {
-        $sql="SELECT regusr.REG_USER_QR,st.REGISTRATION_ID,st.STAFF_ID,st.FIRST_NAME,st.LAST_NAME,st.ADDRESS,dt.DEPARTMENT_NAME,dt.DEPARTMENT_ID,st.MOBILE_NUMBER ,st.EMAIL_ID,st.DESIGNATION FROM `tblstaff` st INNER JOIN `tbldepartment` dt ON st.DEPARTMENT_ID=dt.DEPARTMENT_ID INNER JOIN `registereduser` regusr ON regusr.REGISTRATION_ID=st.REGISTRATION_ID";
+        $sql="SELECT regusr.REG_USER_QR,regusr.IMAGE,st.REGISTRATION_ID,st.STAFF_ID,st.FIRST_NAME,st.LAST_NAME,st.ADDRESS_ID,dt.DEPARTMENT_NAME,dt.DEPARTMENT_ID,st.MOBILE_NUMBER ,st.EMAIL_ID,st.DESIGNATION FROM `tblstaff` st INNER JOIN `tbldepartment` dt ON st.DEPARTMENT_ID=dt.DEPARTMENT_ID INNER JOIN `registereduser` regusr ON regusr.REGISTRATION_ID=st.REGISTRATION_ID";
         $rs=$this->db->query($sql);
         return $rs;
       }
       else 
       {
-        $sql="SELECT regusr.REG_USER_QR,st.REGISTRATION_ID,st.STAFF_ID,st.FIRST_NAME,st.LAST_NAME,st.ADDRESS,dt.DEPARTMENT_NAME,dt.DEPARTMENT_ID,st.MOBILE_NUMBER ,st.EMAIL_ID,st.DESIGNATION FROM `tblstaff` st INNER JOIN `tbldepartment` dt ON st.DEPARTMENT_ID=dt.DEPARTMENT_ID INNER JOIN `registereduser` regusr ON regusr.REGISTRATION_ID=st.REGISTRATION_ID WHERE st.FIRST_NAME LIKE '%".$str."%' OR st.STAFF_ID LIKE '%".$str."%' OR st.MOBILE_NUMBER LIKE '%".$str."%' OR dt.DEPARTMENT_NAME LIKE '%".$str."%';";
+        $sql="SELECT regusr.REG_USER_QR,regusr.IMAGE,st.REGISTRATION_ID,st.STAFF_ID,st.FIRST_NAME,st.LAST_NAME,dt.DEPARTMENT_NAME,dt.DEPARTMENT_ID,st.MOBILE_NUMBER ,st.EMAIL_ID,st.DESIGNATION FROM `tblstaff` st INNER JOIN `tbldepartment` dt ON st.DEPARTMENT_ID=dt.DEPARTMENT_ID INNER JOIN `registereduser` regusr ON regusr.REGISTRATION_ID=st.REGISTRATION_ID WHERE st.FIRST_NAME LIKE '%".$str."%' OR st.STAFF_ID LIKE '%".$str."%' OR st.MOBILE_NUMBER LIKE '%".$str."%' OR dt.DEPARTMENT_NAME LIKE '%".$str."%';";
         $rs=$this->db->query($sql);
         return $rs;
       }
@@ -235,6 +269,25 @@ class AdminModel extends CI_Model
         return false;
       }
     }
+    
+    public function removeRegUserModel()
+    {
+      $uid = $this->input->get('uid',TRUE);
+      $inSql="INSERT INTO `removeduser` SELECT * FROM `registereduser` WHERE `REGISTRATION_ID`='$uid'";
+      $this->db->query($inSql);
+      // --------------------------------
+      
+      $this->db->where('REGISTRATION_ID',$uid);
+      $this->db->delete('registereduser');
+      if($this->db->affected_rows() > 0)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
 
     public function DeleteRegisteredStudentModel()
     {
@@ -286,7 +339,8 @@ class AdminModel extends CI_Model
 
     public function recentStaffActivityViewModel($str)
     {
-      $sql="SELECT pre.REGISTRATION_ID,st.FIRST_NAME ,st.STAFF_ID,st.EMAIL_ID,st.LAST_NAME,dt.DEPARTMENT_ID,dt.DEPARTMENT_NAME,st.DESIGNATION,st.MOBILE_NUMBER ,pre.PRESENCE_STATUS,pre.IN_DATE_TIME,pre.OUT_DATE_TIME FROM (SELECT `REGISTRATION_ID` ,`PRESENCE_STATUS`,`OUT_DATE_TIME`, MAX(IN_DATE_TIME) AS IN_DATE_TIME FROM `tblpeoplepresence` GROUP BY `REGISTRATION_ID`) as pre INNER JOIN `tblstaff` st ON pre.REGISTRATION_ID=st.REGISTRATION_ID INNER JOIN `tbldepartment` dt ON st.DEPARTMENT_ID=dt.DEPARTMENT_ID INNER JOIN `registereduser` reguser ON reguser.REGISTRATION_ID=pre.REGISTRATION_ID WHERE reguser.REGISTRATION_TYPE='1' And reguser.REGISTRATION_ID='$str';";
+      // $sql="SELECT pre.REGISTRATION_ID,st.FIRST_NAME ,st.STAFF_ID,st.EMAIL_ID,st.LAST_NAME,dt.DEPARTMENT_ID,dt.DEPARTMENT_NAME,st.DESIGNATION,st.MOBILE_NUMBER ,pre.PRESENCE_STATUS,pre.IN_DATE_TIME,pre.OUT_DATE_TIME FROM (SELECT `REGISTRATION_ID` ,`PRESENCE_STATUS`,`OUT_DATE_TIME`, MAX(IN_DATE_TIME) AS IN_DATE_TIME FROM `tblpeoplepresence` GROUP BY `REGISTRATION_ID`) as pre INNER JOIN `tblstaff` st ON pre.REGISTRATION_ID=st.REGISTRATION_ID INNER JOIN `tbldepartment` dt ON st.DEPARTMENT_ID=dt.DEPARTMENT_ID INNER JOIN `registereduser` reguser ON reguser.REGISTRATION_ID=pre.REGISTRATION_ID WHERE reguser.REGISTRATION_TYPE='1' And reguser.REGISTRATION_ID='$str';";
+      $sql="SELECT reguser.REGISTRATION_ID,reguser.STATUS,reguser.IMAGE,st.FIRST_NAME ,st.STAFF_ID,st.EMAIL_ID,st.LAST_NAME,dt.DEPARTMENT_ID,dt.DEPARTMENT_NAME,st.DESIGNATION,st.MOBILE_NUMBER FROM `registereduser` reguser INNER JOIN `tblstaff` st ON st.`REGISTRATION_ID`=reguser.`REGISTRATION_ID` INNER JOIN `tbldepartment` dt ON st.DEPARTMENT_ID=dt.DEPARTMENT_ID  WHERE reguser.REGISTRATION_TYPE='1' and reguser.REGISTRATION_ID='$str';";
       $rs=$this->db->query($sql);
       return $rs;
     }
@@ -319,6 +373,25 @@ class AdminModel extends CI_Model
       else 
       {
         $SQL = "UPDATE `tblsystemadmin` SET `ADM_STATUS`='BLOCKED' WHERE `ADM_ID`='$email';";
+        $rs = $this->db->query($SQL);
+        return $rs;
+      }
+    }
+
+    public function ChangeUserStatusModel()
+    {
+      $uid = $this->input->get('uid',TRUE);
+      $status = $this->input->get('status',TRUE);
+
+      if($status=='BLOCKED')
+      {
+        $SQL = "UPDATE `registereduser` SET `STATUS`='ACTIVE' WHERE `REGISTRATION_ID`='$uid';";
+        $rs = $this->db->query($SQL);
+        return $rs;
+      }
+      else 
+      {
+        $SQL = "UPDATE `registereduser` SET `STATUS`='BLOCKED' WHERE `REGISTRATION_ID`='$uid';";
         $rs = $this->db->query($SQL);
         return $rs;
       }

@@ -3,18 +3,61 @@
       $MOB=$this->session->userdata('MOB');
 
 ?>
+<style type="text/css">
+@media(max-width:700px)
+{
+    .tabo thead
+    {
+        display:none;
+    }
+    /* .tabo td:hover
+    {
+        background-color:#1AB394;
+        color:#ffffff;
+    } */
+    .tabo ,.tabo tbody, .tabo tr,.tabo td
+    {
+        display:block;
+        width:100%;
+    }
+    .tabo tr
+    {
+        margin-bottom:1px;
+        border-bottom:5px solid #1AB394;
+        border-top:5px solid #1AB394;
+    }
+    .tabo td
+    {
+        text-align:right;
+        padding-left:50%;
+        postion:relative;
+    }
+    .tabo td:before
+    {
+         content:attr(data-label);
+         position:absolute;
+         left:25px;
+         width:50%;
+         padding-left:15px;
+         font-size:13px;
+         /* font-weight:bold; */
+         text-align:left;
+    }
+}
+
+</style>
         <div class="row">
             <div class="col-lg-12">
                 <div class="wrapper wrapper-content animated fadeInUp">
                     <div class="ibox">
-                        <div class="ibox-title">
-                            <h5>Look Available Staffs</h5>
+                        <div class="ibox-title iboxColor">
+                            <h5>Look Available Staff</h5>
                         </div>
                         <div class="ibox-content">
                             <div class="row m-b-sm m-t-sm">
                                 <div class="col-md-12">
                                     <div class="input-group"><input type="text" id="staffsearch" placeholder="Search by Department" class="input-sm form-control"> <span class="input-group-btn">
-                                        <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span>
+                                        <button type="button" class="btn btn-sm btn-success"> Go!</button> </span>
                                     </div>
                                     
                                 </div>
@@ -23,7 +66,7 @@
                                 </div>
                             </div>
                             <div class="project-list">
-                                <table class="table table-hover">
+                                <table class="table table-hover tabo">
                                     <tbody id="showstaff">
                                     
                                     </tbody>
@@ -87,11 +130,11 @@
                                for(i=0; i<data.length; i++)
                                {
                                    html +='<tr>'+
-                                       '<td class="project-status"><label class="label label-primary"  btnChgStatus-id="'+i+'" staffdata1="'+data[i].REGISTRATION_ID+'">'+data[i].PRESENCE_STATUS+'</label></td>'+
-                                       '<td class="project-title"><a href="<?=base_url('Student-Activity-View');?>?'+data[i].REGISTRATION_ID+'">'+data[i].FIRST_NAME+' '+data[i].LAST_NAME+'</a><br/><small>'+data[i].MOBILE_NUMBER+'||'+data[i].STAFF_ID+'</small></td>'+
+                                       '<td data-label="Available Status" class="project-status"><label class="label label-success"  btnChgStatus-id="'+i+'" staffdata1="'+data[i].REGISTRATION_ID+'">'+data[i].PRESENCE_STATUS+'</label></td>'+
+                                       '<td data-label="Details" class="project-title"><a href="<?=base_url('Student-Activity-View');?>?'+data[i].REGISTRATION_ID+'">'+data[i].FIRST_NAME+' '+data[i].LAST_NAME+'</a><br/><small>'+data[i].MOBILE_NUMBER+'||'+data[i].STAFF_ID+'</small></td>'+
                                     //    '<td class="project-completion">'+data[i].EMAIL_ID+'<div class="progress progress-mini"><div style="width: 48%;" class="progress-bar"></div></div></td>'+
-                                    '<td class="project-completion">'+data[i].EMAIL_ID+'</td>'+
-                                       '<td class="project-actions"><a href="<?= base_url('Staff-Activity-View') ?>?regID='+data[i].REGISTRATION_ID+'" staffdata2="'+data[i].REGISTRATION_ID+'" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View Complete Activity</a></td>'+
+                                    '<td data-label="Email ID" class="project-completion">'+data[i].EMAIL_ID+'</td>'+
+                                       '<td data-label="Action" class="project-actions"><a href="<?= base_url('Staff-Activity-View') ?>?regID='+data[i].REGISTRATION_ID+'" staffdata2="'+data[i].REGISTRATION_ID+'" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View Complete Activity</a></td>'+
                                        '</tr>';
                                }
                                $('#showstaff').html(html);

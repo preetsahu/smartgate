@@ -50,7 +50,7 @@
                 };
                 toastr.success('Admin', 'Welcome to Smart Gate Entrance System');
 
-            }, 1300);
+            }, 1000);
 
 
             var data1 = [
