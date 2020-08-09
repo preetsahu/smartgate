@@ -6,7 +6,7 @@ class Welcome extends CI_Controller
 
 	public function index()
 	{
-            $this->load->view('user/INDEX');
+            $this->load->view('user/SmartGate');
 	}
     
 }

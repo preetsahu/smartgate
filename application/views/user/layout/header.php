@@ -37,7 +37,16 @@
     <!-- <link href="<?= base_url()?>assets/admin/css/animate.css" rel="stylesheet"> -->
     <link href="<?= base_url()?>assets/admin/css/style.css" rel="stylesheet">
     <!-- <link href="<?= base_url()?>assets/admin/css/plugins/dataTables/datatables.min.css" rel="stylesheet"> -->
- 
+    
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url()?>assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url()?>assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url()?>assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="<?= base_url()?>assets/favicon/site.webmanifest">
+    <link rel="shortcut icon" href="<?= base_url()?>assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="<?= base_url()?>assets/favicon/favicon.ico" type="image/x-icon">
+    <!-- favicon -->
+
 </head>
 
 <body>
