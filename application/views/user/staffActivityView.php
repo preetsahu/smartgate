@@ -130,7 +130,7 @@
                                     <div class="panel-options">
                                         <ul class="nav nav-tabs" id="generate">
                                             <li class="active"><a href="#tab-1" data-toggle="tab">Activity</a></li>
-                                            <li><a href="#tab-2" data-toggle="tab">Classes</a></li>
+                                            <!-- <li><a href="#tab-2" data-toggle="tab">Classes</a></li> -->
                                             <li><a href="<?=base_url('View-Staff-Report')?>" ><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
 Generate PDF</a></li>
                                         </ul>
@@ -231,6 +231,7 @@ Generate PDF</a></li>
                                         foreach($completeStaffActivity as $sca)
                                         {
                                             error_reporting(0);
+                                            $status=$sca->PRESENCE_STATUS;
                                             $date1=date_create("$sca->IN_DATE_TIME");
                                             $date2=date_create("$sca->OUT_DATE_TIME");
                                             $dateFormat=date_format($date1,"d-M-Y");
@@ -239,20 +240,57 @@ Generate PDF</a></li>
                                             $diff=date_diff($date1,$date2);
                                             ?>
                                         <tr>
-                                            <td>
-                                                <span class="label label-primary"><i class="fa fa-check"></i> </span>
+                                            <td data-label="Status">
+                                                <!-- Time Spent<span class="label label-primary"><i class="fa fa-check"></i> </span> -->
+                                                <?php 
+                                                                if($status=='IN')
+                                                                {
+                                                            ?>
+                                                            <span class="label label-primary"><i class="fa fa-check"><?=$status?></i> </span>
+                                                            <?php
+                                                            }
+                                                            else
+                                                            {
+                                                                ?>
+                                                            <span class="label label-danger"><i class="fa fa-check"><?=$status?></i> </span>
+                                                            <?php
+                                                            }
+                                                            ?>
                                             </td>
-                                            <td>
+                                            <td data-label="Date">
                                                    <?=$dateFormat ?>
                                             </td>
-                                            <td>
+                                            <td data-label="In Time">
                                                  <i class="fa fa-clock-o "><?=$inTime ?></i>
                                             </td>
-                                            <td>
-                                                 <?=$outTime ?>
+                                            <td style="padding: 15px;margin-bottom:10px;" data-label="Out Time">
+                                                       <?php 
+                                                            if($status=='IN')
+                                                            {
+
+                                                                echo ' ';
+                                                            }
+                                                            else
+                                                            {
+                                                              echo $outTime;
+                                                            }
+                                                        ?>
+                                                           
+                                                 <!-- <?=$outTime ?> -->
                                             </td>
-                                            <td>
-                                            <?=$diff->format("%h hour %I minutes %s seconds");?>
+                                            <td data-label="Time Spent">
+                                               <?php 
+                                                            if($status=='IN')
+                                                            {
+
+                                                                echo ' ';
+                                                            }
+                                                            else
+                                                            {
+                                                              echo $diff->format("%h hour %I min ");
+                                                            }
+                                                        ?>
+                                                <!-- <?=$diff->format("%h hour %I minutes %s seconds");?> -->
                                             </td>
                                             
                                         </tr>
@@ -265,6 +303,8 @@ Generate PDF</a></li>
                                     </table>
 
                                 </div>
+                                <p class="btn btn-danger font-bold"><span><i class="fa fa-circle text-warning"></i> Current Status:<?=$status?></span></p>
+
                                 </div>
 
                                 </div>

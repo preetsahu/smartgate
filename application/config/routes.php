@@ -53,7 +53,7 @@ $route['Register-User']='userController/UserController/registerUser';
 $route['Student-Profile']='userController/UserController/studentProfileView';
 $route['Staff-Profile']='userController/UserController/staffProfileView';
 $route['View-Faculties']='userController/UserController/FacultiesView';
-$route['View-Students']='userController/UserController/studentsView';
+$route['Contact-Students']='userController/UserController/studentsView';
 $route['Mail-Box']='userController/UserController/mailBoxView';
 $route['eMail']='userController/UserController/EmailView';
 $route['Compose-Email']='userController/UserController/composeEmailView';
@@ -65,6 +65,13 @@ $route['Update-Student-Info']="userController/UserController/updateStudentInfo";
 $route['Update-Staff-Info']="userController/UserController/updateStaffInfo";
 $route['error']='userController/UserController/errorpage';
 
+$route['View-Staff']='userController/UserController/viewStaffpage';
+$route['View-Staffs-Availibility']='userController/UserController/availStaffpage';
+
+$route['View-Students-Availibility']='userController/UserController/availStudentPage';
+$route['Student-Activity-View']='userController/UserController/studentActivityView';
+
+$route['Look-Students']='userController/UserController/viewStudentPage';
 ////////////////////////////////////////////---------end----------///////////////////////////////////////////////////////////
 /////////////////////////////////////////////--User Profile--///////////////////////////////////////////////////////////////
 

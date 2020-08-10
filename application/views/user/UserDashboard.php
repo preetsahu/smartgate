@@ -119,7 +119,7 @@
                         <div class="col-md-6">
                             <h1 class="no-margins" style="font-weight:bold;">
                             <?php  
-                                $count=$stuCount+$GaurdianCount+$staffCount;
+                                $count=$stuCount+$OthersCount+$GaurdianCount+$staffCount;
                                 echo $count;
                             ?>
                             </h1>

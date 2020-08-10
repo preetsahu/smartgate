@@ -248,10 +248,25 @@ class UserModel extends CI_Model
         $res=$this->db->query($sql);
         return $res;
     }
+    
+    public function queryMailerModel()
+    {
+        
+        $eid=$this->input->post('eid',true);
+        $name=$this->input->post('name',true);
+        $content=$this->input->post('content',true);
+         // Change the line below to your timezone!
+         $timezone =date_default_timezone_set('Asia/Kolkata');
+         //    echo "The current server timezone is: " . $timezone;
+            $date = date('Y-m-d H:i:s', time());
+        $sql="INSERT INTO `queries`(`NAME`, `EMAIL`,`date_time` ,`MESSAGE`) VALUES ('$name','$eid','$date','$content')";
+        $res=$this->db->query($sql);
+        return $res;
+    }
 
     public function mailBoxDataModel($uID)
     {
-        $sql="SELECT  s.`REGISTRATION_ID`,`SERIAL`,`MAIL_SENDER_ID`, `MAIL_DATETIME`, `MAIL_SUBJECT`, `MAIL_CONTENT`, `MAIL_STATUS`, `MAIL_REPLY` ,s.STAFF_ID ,s.FIRST_NAME ,s.LAST_NAME,s.DESIGNATION,s.EMAIL_ID,s.DEPARTMENT_ID FROM `studentmailing` m INNER JOIN tblstaff s ON s.REGISTRATION_ID=m.MAIL_SENDER_ID WHERE m.`REGISTRATION_ID`='$uID'";
+        $sql="SELECT  s.`REGISTRATION_ID`,`SERIAL`,`MAIL_SENDER_ID`, `MAIL_DATETIME`, `MAIL_SUBJECT`, `MAIL_CONTENT`, `MAIL_STATUS`, `MAIL_REPLY` ,s.STAFF_ID ,s.FIRST_NAME ,s.LAST_NAME,s.DESIGNATION,s.EMAIL_ID,s.DEPARTMENT_ID FROM `studentmailing` m INNER JOIN tblstaff s ON s.REGISTRATION_ID=m.MAIL_SENDER_ID WHERE m.`REGISTRATION_ID`='$uID' order by m.MAIL_DATETIME desc";
         $res=$this->db->query($sql);
         return $res;
     }

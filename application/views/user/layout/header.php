@@ -101,9 +101,9 @@
                     </li>
                  
                     <li>
-                        <a href="<?= base_url('User-QR')?>"><i class="fa fa-qrcode" aria-hidden="true"></i>
+                        <!-- <a href="<?= base_url('User-QR')?>"><i class="fa fa-qrcode" aria-hidden="true"></i>
                          <span class="nav-label">Your QR</span>
-                        </a>
+                        </a> -->
                     </li>
                             <?php
                                 if($usertype=='1')
@@ -127,15 +127,32 @@
                                 }
                             ?>  
                 
-                    <li><a href="<?= base_url('View-Faculties') ?>"><i class="fa fa-search"></i><span class="nav-label">Look Faculties</span></a></li>
-                        <?php
+                    <li>
+                        <a href="#"><i class="fa fa-search"></i> <span class="nav-label">Staff</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                        
+                          <li><a href="<?= base_url('View-Staffs-Availibility') ?>"><i class="fa fa-user"></i>Staff Availibility</a></li>
+                          <li><a href="<?= base_url('View-Faculties') ?>"><i class="fa fa-group"></i><span class="nav-label">Contact Faculties</span></a></li>
+                        </ul>
+                    </li>
+                    
+                     <li>   <?php
                         if($usertype=='1')
                         {
                             ?>
-                        <li><a href="<?= base_url('View-Students') ?>"><i class="fa fa-group"></i> <span class="nav-label">Look Students</span></a></li>
+                            
+                            <a href="#"><i class="fa fa-search"></i> <span class="nav-label">Student</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li><a href="<?= base_url('Look-Students') ?>"><i class="fa fa-user"></i>View Students</a></li>
+                                <li><a href="<?= base_url('View-Students-Availibility') ?>"><i class="fa fa-user"></i>Student Availibility</a></li>
+                                <<li><a href="<?= base_url('Contact-Students') ?>"><i class="fa fa-group"></i><span class="nav-label">Contact Students</span></a></li>
+                            </ul>
+                           
+                        
                         <?PHP
                         }
                         ?>
+                     </li>
                     <li>
                     <a href=""><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span></a>
                     <ul class="nav nav-second-level collapse">

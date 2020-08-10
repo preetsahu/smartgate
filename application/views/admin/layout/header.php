@@ -67,7 +67,7 @@
                         <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Admin</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="<?= base_url('Activate-Admin') ?>">Admin's</a></li>
-                            <li><a href="<?= base_url('View-User-Activities'); ?>">Get Details</a></li>
+                            <!-- <li><a href="<?= base_url('View-User-Activities'); ?>">Get Details</a></li> -->
                             <!-- <li><a href="form_file_upload.html">File Upload</a></li> -->
                             <!-- <li><a href="validation.html">Validation</a></li> -->
                         </ul>
@@ -90,15 +90,15 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-pencil"></i><span class="nav-label">Database Operations<span class="fa arrow"></span></span></a>
+                        <!-- <a href="#"><i class="fa fa-pencil"></i><span class="nav-label">Database Operations<span class="fa arrow"></span></span></a>
                          <ul class="nav nav-second-level collapse">
                             <li><a href="">Add table</a></li>
                             <li><a href="">Add Fields</a></li>
                             <!-- <li><a href="mail_compose.html">Compose email</a></li>
                             <li><a href="email_template.html">Email templates</a></li> -->
-                        </ul>
+                        <!-- </ul> -->
                     </li>
-
+<li>
                          <?php
 
                             $NAME=$this->session->userdata('NAME');
@@ -110,9 +110,9 @@
                              }
                         ?>
                     <li>
-                        <a href="<?= base_url('Email-us')?>"><i class="fa fa-th-large"></i>
+                        <!-- <a href="<?= base_url('Email-us')?>"><i class="fa fa-th-large"></i>
                          <span class="nav-label">Contact Us</span>
-                        </a>
+                        </a> -->
                     </li>
                 </ul>
 

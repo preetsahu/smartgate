@@ -3,8 +3,15 @@
 <head>
     <title>
     </title>
-    <link type="text/css" href="<?=base_url()?>assets/user/css/tailwind.min.css" rel="stylesheet">
-   
+    <link type="text/css" href="<?=base_url()?>assets/sitehome/tailwind.min.css" rel="stylesheet">
+     <!-- favicon -->
+     <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url()?>assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url()?>assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url()?>assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="<?= base_url()?>assets/favicon/site.webmanifest">
+    <link rel="shortcut icon" href="<?= base_url()?>assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="<?= base_url()?>assets/favicon/favicon.ico" type="image/x-icon">
+    <!-- favicon -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/user/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -12,7 +19,7 @@
     <!-- menu -->
     <header class="text-gray-700 body-font">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-            <a href="http://www.nitrr.ac.in/" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <a href="<?=base_url()?>" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
                 <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path> -->
         <img src="<?= base_url()?>assets/favicon/logo.png" ?>
@@ -20,10 +27,10 @@
                 <span class="ml-3 text-xl">Smart Gate Entrance</span>
             </a>
             <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-                <a href="#status" class="mr-5 hover:text-gray-900">Status</a>
+                <a href="#status" class="mr-5 hover:text-gray-900">View Statistic</a>
+                <a href="#working" class="mr-5 hover:text-gray-900">How It Works</a>
                 <a href="#Functionality" class="mr-5 hover:text-gray-900">Functionalities</a>
                 <a href="#RegisterdUser" class="mr-5 hover:text-gray-900">Users</a>
-                <a href="#working" class="mr-5 hover:text-gray-900">How It Works</a>
                 <a href="#team" class="mr-5 hover:text-gray-900">Our Team</a>
                 <a href="#contact" class="mr-5 hover:text-gray-900">Contact</a>
             </nav>
@@ -34,35 +41,24 @@
     <!-- menu -->
     <!-- below menu -->
     <section id="status" class="text-gray-700 body-font ">
-        <div class="container px-5 py-10 mx-auto ">
+        <div class="container px-5 py-20 mx-auto ">
             <div class="flex flex-col text-center w-full mb-10 ">
                 <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 ">Smart Gate Entrance</h1>
                 <p class="lg:w-2/3 mx-auto leading-relaxed text-base ">
-                    Welcome to Smart Gate This webapplication is developed to help students , staffs , various visitors to smartly enter to institution building as well as hostel mess. By the help of QR generated at time of registration of user , we are working to create
-                    a gate which function as soon as user scan the QR in embedded machine to gate and open the gate to provide entry. By help of this system we can able to find various data like number of peoples in building , we can also take attendance
-                    based on it.
+                Welcome to SMART GATE platform!! This web application has been evolved with the prime motive to help students , staff members and other visitors to smartly enter to institute building as well as hostel mess. With the aid of QR generated at time of registering user , we are working to create a gate which function as soon as user scan the QR in embedded machine to gate and open the gate to provide entry. By help of this system, it will become quite easy to trace and track the users connected with the institution as well as the users outside and inside the organization at any point of time.This system enhances the functionality by providing important data to be analyzed and would make decision making far easier and effective.
                 </p>
             </div>
             <div class="flex flex-wrap -m-4 text-center ">
+               
                 <div class="p-4 md:w-1/4 sm:w-1/2 w-full ">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-lg ">
-                    <i class="fas fa fa-list" style="font-size:45px;margin:7px;color:#667EEA"></i>
-            
-                        <h2 class="title-font font-medium text-3xl text-gray-900 ">2.7K</h2>
-                        <p class="leading-relaxed ">Downloads</p>
-                    </div>
-                </div>
-                <div class="p-4 md:w-1/4 sm:w-1/2 w-full ">
-                    <div class="border-2 border-gray-200 px-4 py-6 rounded-lg ">
-                        <!-- <svg fill="none " stroke="currentColor " stroke-linecap="round " stroke-linejoin="round " stroke-width="2 " class="text-teal-500 w-12 h-12 mb-3 inline-block " viewBox="0 0 24 24 ">
-              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 "></path>
-              <circle cx="9 " cy="7 " r="4 "></circle>
-              <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75 "></path>
-            </svg> -->
-            <i class="fas fa fa-user" style="font-size:45px;margin:7px;color:#667EEA"></i>
-            
-                        <h2 class="title-font font-medium text-3xl text-gray-900 ">1.3K</h2>
-                        <p class="leading-relaxed ">Users</p>
+                    <i class="fa fa fa-user" style="font-size:45px;margin:7px;color:#667EEA"></i>
+                        <h2 class="title-font font-medium text-3xl text-gray-900 ">
+                        <?php  foreach($staffCount As $c) {$staffCount=$c->staffCount;}
+                        echo $staffCount;
+                        ?>
+                        </h2>
+                        <p class="leading-relaxed ">Faculties Inside Campus</p>
                     </div>
                 </div>
                 <div class="p-4 md:w-1/4 sm:w-1/2 w-full ">
@@ -71,21 +67,43 @@
               <path d="M3 18v-6a9 9 0 0118 0v6 "></path>
               <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z "></path>
             </svg> -->
-            <i class="fas fa fa-group" style="font-size:45px;margin:7px;color:#667EEA"></i>
+            <i class="fa fa fa-group" style="font-size:45px;margin:7px;color:#667EEA"></i>
             
-                        <h2 class="title-font font-medium text-3xl text-gray-900 ">74</h2>
-                        <p class="leading-relaxed ">Files</p>
+                        <h2 class="title-font font-medium text-3xl text-gray-900 ">
+                        <?php  foreach($stuCount As $c) {$stuCount=$c->stuCount;}
+                        echo $stuCount;
+                        ?>
+                    </h2>
+                        <p class="leading-relaxed ">Student Inside Campus</p>
                     </div>
                 </div>
                 <div class="p-4 md:w-1/4 sm:w-1/2 w-full ">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-lg ">
                         <!-- <svg fill="none " stroke="currentColor " stroke-linecap="round " stroke-linejoin="round " stroke-width="2 " class="text-teal-500 w-12 h-12 mb-3 inline-block " viewBox="0 0 24 24 ">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z "></path>
-            </svg> -->
-            <i class="fas fa fa-search" style="font-size:45px;margin:7px;color:#667EEA"></i>
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z "></path>
+                    </svg> -->
+                    <i class="fa fa fa-circle" style="font-size:45px;margin:7px;color:#667EEA"></i>
             
-                        <h2 class="title-font font-medium text-3xl text-gray-900 ">46</h2>
-                        <p class="leading-relaxed ">Places</p>
+                        <h2 class="title-font font-medium text-3xl text-gray-900 ">
+                        <?php  foreach($GaurdianCount As $G) {$GaurdianCount=$G->GaurdianCount;}
+                           foreach($OthersCount As $G) {$OthersCount=$G->OtherCount;}
+                            $other= $OthersCount+$GaurdianCount;
+                            echo $other
+                        ?>
+                        </h2>
+                        <p class="leading-relaxed ">Others Inside Campus</p>
+                    </div>
+                </div>
+                <div class="p-4 md:w-1/4 sm:w-1/2 w-full ">
+                    <div class="border-2 border-gray-200 px-4 py-6 rounded-lg ">
+                    <i class="fa fa fa-building" style="font-size:45px;margin:7px;color:#667EEA"></i>
+                       <h2 class="title-font font-medium text-3xl text-gray-900 ">
+                       <?php  
+                                $count=$stuCount+$other+$staffCount;
+                                echo $count;
+                            ?>
+                       </h2>
+                        <p class="leading-relaxed ">Total People Inside Campus</p>
                     </div>
                 </div>
             </div>
@@ -150,10 +168,11 @@
                           <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
                         </svg>
                             </div>
-                            <h2 class="text-gray-900 text-lg title-font font-medium">Student Presence Tracking</h2>
+                            <h2 class="text-gray-900 text-lg title-font font-medium">Track Student Presence</h2>
                         </div>
                         <div class="flex-grow">
-                            <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
+                        <p class="leading-relaxed text-base" >This is one of the major functio-nality of SMART GATE to track and account the presence of ca-mpus students. Student Pres-ence Tracking is also useful for the teachers to trace students' attendance and maintain their records for many other purpo-ses like analyzing the sincerity of students,reporting behaviour to respective parents and many more use cases.</p>
+
                             <!-- <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                           <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -172,10 +191,10 @@
                           <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
                         </svg>
                             </div>
-                            <h2 class="text-gray-900 text-lg title-font font-medium">Student Presence Tracking</h2>
+                            <h2 class="text-gray-900 text-lg title-font font-medium">Mailbox</h2>
                         </div>
                         <div class="flex-grow">
-                            <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
+                            <p class="leading-relaxed text-base">By the help of this service any Faculty or student directly able to intract by sending mail and repling on them . Faculty can forward mail to their department specific student </p>
                             <!-- <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                           <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -190,11 +209,11 @@
     <!-- middle -->
 
 
-<!-- working map -->
-<section class="text-gray-700 body-font">
+<!-- how it work map -->
+<section id="working" class="text-gray-700 body-font">
   <div class="container px-5 py-24 mx-auto flex flex-wrap">
    <div class="flex flex-col text-center w-full mb-3  px-5 py-5">
-    <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">How To Works ?</h1>
+    <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">How It Works ?</h1>
     </div>
     <div class="flex flex-wrap w-full">
       <div class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
@@ -239,24 +258,24 @@
             <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
           </div>
           <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
-           <i class="fa fa-barcode" style="font-size:20px"></i>
+           <i class="fa fa-building" style="font-size:20px"></i>
           </div>
           <div class="flex-grow pl-4">
             <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">Enter In institution</h2>
-            <p class="leading-relaxed">VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk bespoke try-hard cliche palo santo offal.</p>
+            <p class="leading-relaxed">After authentication you will be able to Enter.</p>
           </div>
         </div>
         <div class="flex relative">
           <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
-           <i class="fa fa-" style="font-size:20px"></i>
+           <i class="fa fa-stop" style="font-size:20px"></i>
           </div>
           <div class="flex-grow pl-4">
             <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">FINISH</h2>
-            <p class="leading-relaxed">After authentication you will be able to Enter.</p>
+            <p class="leading-relaxed"></p>
           </div>
         </div>
       </div>
-      <img class="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12" src="<?=base_url()?>assets/dashboard.png" alt="step">
+      <img class="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12" src="<?=base_url()?>assets/dashboard.PNG" alt="step">
     </div>
   </div>
 </section>
@@ -265,25 +284,46 @@
 <!-- registered user -->
 <section id="RegisterdUser" class="text-gray-700 body-font">
     <div class="flex flex-col text-center w-full mb-3  px-5 py-5">
-                <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Registers Users</h1>
+                <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Registered User</h1>
     </div>
   <div class="container px-5 py-10 mx-auto">
     <div class="flex flex-wrap -m-4 text-center">
       <div class="p-4 sm:w-1/4 w-1/2">
-        <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">300</h2>
+        <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">
+        <?php
+          foreach($regStudentCount As $c) {$regStuCount=$c->stuCount;}
+            echo $regStuCount;
+        ?>
+        </h2>
         <p class="leading-relaxed">Students</p>
       </div>
       <div class="p-4 sm:w-1/4 w-1/2">
-        <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">80</h2>
+        <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">
+        <?php
+          foreach($regStaffCount As $c) {$regStaffCount=$c->staffCount;}
+            echo $regStaffCount;
+        ?>
+        </h2>
         <p class="leading-relaxed">Faculties</p>
       </div>
       <div class="p-4 sm:w-1/4 w-1/2">
-        <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">35</h2>
+        <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">
+        
+        <?php
+          foreach($regVisitorCount As $c) {$regVisitorCount=$c->OtherCount;}
+            echo $regVisitorCount;
+        ?>
+        </h2>
         <p class="leading-relaxed">Visitors</p>
       </div>
       <div class="p-4 sm:w-1/4 w-1/2">
-        <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">4</h2>
-        <p class="leading-relaxed">Others</p>
+        <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">
+        <?php
+          foreach($regWorkerCount As $c) {$regWorkerCount=$c->OtherCount;}
+            echo $regWorkerCount;
+        ?>
+        </h2>
+        <p class="leading-relaxed">Workers</p>
       </div>
     </div>
   </div>
@@ -360,7 +400,40 @@
 <!-- team -->
 
 <!-- contact -->
+<section id="contact" class="text-gray-700 body-font relative">
+  <div class="container px-5 py-24 mx-auto flex sm:flex-no-wrap flex-wrap">
+    <div class="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+              <iframe class="absolute inset-0" style="filter: grayscale(1) contrast(1.2) opacity(0.4);" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.5490831480765!2d81.60284041447088!3d21.249722185879126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a28dde213f66723%3A0x21543965c50c43c7!2sNational%20Institute%20of%20Technology%2C%20Raipur!5e0!3m2!1sen!2sus!4v1596958253041!5m2!1sen!2sus" width="100%" height="100%" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <div class="bg-white relative flex flex-wrap py-6">
+        <div class="lg:w-1/2 px-6">
+          <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm">ADDRESS</h2>
+          <p class="leading-relaxed">Raipur , Chhattisgarh PIN-492010 NIT Raipur </p>
+        </div>
+        <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
+          <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm">EMAIL</h2>
+          <a class="text-indigo-500 leading-relaxed">preetsahu17@email.com</a>
+          <a class="text-indigo-500 leading-relaxed">kunalnag90@email.com</a>
+          <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mt-4">PHONE</h2>
+          <p class="leading-relaxed">+91-7406002871</p>
+        </div>
+      </div>
+    </div>
+    <div class="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
+      <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">Mail Us</h2>
+      <p class="leading-relaxed mb-5 text-gray-600">SmartGate Team </p>
+      <div class="alert alert-success text-white w-40 bg-pink-800" style="display:none;"></div>
 
+      <form id="formMail" name="myForm">
+      <input id="name" class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" placeholder="Name" type="text" required=true>
+      <input id="eid" class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" placeholder="Email" type="email" required>
+      <textarea id="contents" class="bg-white rounded border border-gray-400 focus:outline-none h-32 focus:border-indigo-500 text-base px-4 py-2 mb-4 resize-none" placeholder="Message" required></textarea>
+      <br>
+      <button type="button" id="btnSent" class="btn text-white bg-blue-400 py-2 px-6">Send message</button>
+      <!-- <button id="btnSent" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Send</button> -->
+      </form><!-- <p class="text-xs text-gray-500 mt-3">Chicharrones blog helvetica normcore iceland tousled brook viral artisan.</p> -->
+    </div>
+  </div>
+</section>
 
 <!-- contact -->
 
@@ -403,4 +476,63 @@
 
 </BODY>
 
+
+<script src="<?= base_url()?>assets/admin/js/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+  
+     //  mail student
+     $('#btnSent').click(function(){
+            var eid=$('#eid').val();
+            var name=$('#name').val();
+            var content=$('#contents').val();
+            if(document.myForm.Name.value == "" )
+            {
+            alert( "Please provide your name!" );
+            document.myForm.Name.focus() ;
+            return false;
+            }
+            if( document.myForm.EMail.value == "" ) {
+                alert( "Please provide your Email!" );
+                document.myForm.EMail.focus() ;
+                return false;
+            }
+            if($('#name').val() == '' or $('#eid').val() == '' or  $('#contents').val() == '')
+            {
+                $('.alert-success').html('please fill the details').fadeIn().delay(4000).fadeOut('slow');
+            }
+            else{
+                $.ajax({
+                type: 'ajax',
+                method: 'post',
+                async: false,
+                url:'<?=base_url('userController/UserController/queryMailer'); ?>',
+                data:{eid:eid,name:name,content:content},
+                dataType:'json',
+                success:function(response){
+                    if(response.success){
+                        // alert('Mail has been sent successfully');
+                        $('.alert-success').html('Mail Sent Successfully').fadeIn().delay(4000).fadeOut('slow');
+                        // $('#MailModal').modal('hide');
+                        $('#formMail')[0].reset();
+                       
+                    }else{
+                        alert('Error');
+                    }
+                },
+                error:function(){
+                    alert('Mail Failed!!!Try After Sometime !');
+                }
+            });
+            }
+            
+    });
+</script>
+
+
+
+
+
+<!---------------------------------------------------------------------------------------------------------------------------- -->
+
 </html>
+

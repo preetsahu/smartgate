@@ -305,10 +305,32 @@
                                                             <?=$inTime ?>
                                                         </td>
                                                         <td style="padding: 15px;margin-bottom:10px;" data-label="Out Time">
-                                                            <?=$outTime ?>
+                                                        <?php 
+                                                            if($status=='IN')
+                                                            {
+
+                                                                echo ' ';
+                                                            }
+                                                            else
+                                                            {
+                                                              echo $outTime;
+                                                            }
+                                                        ?>
+                                                           
                                                         </td>
                                                         <td data-label="Time Spent">
-                                                        <?=$diff->format("%h hour %I min ");?>
+                                                        <?php 
+                                                            if($status=='IN')
+                                                            {
+
+                                                                echo ' ';
+                                                            }
+                                                            else
+                                                            {
+                                                              echo $diff->format("%h hour %I min ");
+                                                            }
+                                                        ?>
+                                                        <!-- <?=$diff->format("%h hour %I min ");?> -->
                                                         </td>
                                                     </tr>
 

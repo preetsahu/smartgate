@@ -190,12 +190,20 @@ class AdminController extends CI_Controller
 
     public function viewUsrActivities()
     {
+        if(isset($_SESSION['EMAIL']))
+        $this->load->view('admin/table_data_tables');
+        else
+        $this->load->view('admin/login');
         $this->load->view('admin/table_data_tables');
     }
 
     public function availStudentPage()
     {
+        if(isset($_SESSION['EMAIL']))
         $this->load->view('admin/studentAvailability');
+        else
+        $this->load->view('admin/login');
+        
     }
 
     public function viewAvailStudents()
@@ -207,7 +215,11 @@ class AdminController extends CI_Controller
 
     public function viewStudentPage()
     {
+        if(isset($_SESSION['EMAIL']))
         $this->load->view('admin/StudentsSearch');
+        else
+        $this->load->view('admin/login');
+        
     }
 
     public function getAllStudentDetails()
@@ -218,7 +230,11 @@ class AdminController extends CI_Controller
 
     public function availStaffpage()
     {
+        if(isset($_SESSION['EMAIL']))
         $this->load->view('admin/staffAvailability');
+        else
+        $this->load->view('admin/login');
+       
     }
 
     public function viewAvailStaff()
@@ -230,7 +246,11 @@ class AdminController extends CI_Controller
 
     public function viewStaffpage()
     {
+        if(isset($_SESSION['EMAIL']))
         $this->load->view('admin/StaffSearch');
+        else
+        $this->load->view('admin/login');
+        
     }
 
     public function getAllStaffDetails()
@@ -312,14 +332,17 @@ public function generate_pdf()
     $this->table->set_heading('NAME:','MOBILE:', 'DEPARTMENT NAME:', 'REGISTRATION ID:');
 
     $staffactivity = $this->AdminModel->completeStaffActivityViewModel($str);
-
+    if($staffactivity==NULL)
+    {
+        error_reporting(0);
+        exit(0);
+    }
     foreach ($staffactivity as $s)
     {
         $regid=$s->REGISTRATION_ID;
         $mob=$s->MOBILE_NUMBER;
         $name=$s->FIRST_NAME.' '.$s->LAST_NAME;
         $dept=$s->DEPARTMENT_NAME;
-       
     }
     $this->table->add_row($name,$mob,$dept,$regid);
     $html = $this->table->generate();

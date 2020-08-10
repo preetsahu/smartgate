@@ -121,6 +121,40 @@ class UserController extends CI_Controller
         else
          redirect('User-Login-View');
     }
+    public function availStudentPage()
+    {
+        if(isset($_SESSION['uMOB']))
+        $this->load->view('user/studentAvailability');
+        else
+        $this->load->view('user/INDEX');
+        
+    }
+
+    public function studentActivityView()
+    {
+        $str=$this->input->get('SID');
+        
+        if(!$str)
+            $this->load->view('admin/studentAvailability');
+        else
+        {
+            $student['StudentDetails']=$this->AdminModel->GetStudentByIDModel($str)->result();
+            $student['completeStudentActivity']=$this->AdminModel->completeStudentActivityViewModel($str)->result();
+            $this->load->view('user/studentActivityView',$student);
+        }
+        //passing registration id to generatepdf function using session 
+        $this->session->set_flashdata('studentActivity',$str);
+        // $this->session->set_userdata($str);
+    }
+
+    public function viewStudentPage()
+    {
+        if(isset($_SESSION['EMAIL']))
+        $this->load->view('user/StudentsSearch');
+        else
+        $this->load->view('user/INDEX');
+        
+    }
 
     public function studentsView()
     {
@@ -202,6 +236,26 @@ class UserController extends CI_Controller
         echo json_encode($msg);
     }
 
+    public function queryMailer()
+    {
+        $res=$this->UserModel->queryMailerModel();
+        $msg['success']=false;
+        if($res){
+            $msg['success']=true;
+        }
+        echo json_encode($msg);
+    }
+
+    public function availStaffpage()
+    {
+        if(isset($_SESSION['EMAIL']))
+        $this->load->view('user/staffAvailability');
+        else
+        $this->load->view('user/staffAvailability');
+       
+    }
+
+
     public function Profile()
     {
         $timezone = date_default_timezone_get();
@@ -237,7 +291,7 @@ class UserController extends CI_Controller
                     'uPic' => $r['IMAGE'],
                     'usr_logged_in' => true);
                 $this->session->set_userdata($user);
-                redirect('User-QR');
+                redirect('User-Dashboard');
                 }
                 else
                 {

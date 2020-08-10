@@ -97,7 +97,7 @@
                                     <div class="panel-options">
                                         <ul class="nav nav-tabs" id="generate">
                                             <li class="active"><a href="#tab-1" data-toggle="tab">Activity</a></li>
-                                            <li><a href="#tab-2" data-toggle="tab">Classes</a></li>
+                                            <!-- <li><a href="#tab-2" data-toggle="tab">Classes</a></li> -->
                                             <li><a href="<?=base_url('View-Staff-Report')?>" ><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
 Generate PDF</a></li>
                                         </ul>

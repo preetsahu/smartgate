@@ -82,7 +82,7 @@ include 'layout/header.php';
                 </div>
                     <div class="mail-attachment">
                         <p>
-                            <span><i class="fa fa-paperclip"></i> 2 attachments - </span>
+                            <span><i class="fa fa-paperclip"></i> 3 attachments - </span>
                             <a href="#">Download all</a>
                             |
                             <a href="#">View all images</a>
@@ -97,9 +97,9 @@ include 'layout/header.php';
                                             <i class="fa fa-file"></i>
                                         </div>
                                         <div class="file-name">
-                                            Document_2014.doc
+                                            Document_2020.doc
                                             <br/>
-                                            <small>Added: Jan 11, 2014</small>
+                                            <small>Added: mar 11, 2020</small>
                                         </div>
                                     </a>
                                 </div>
@@ -114,7 +114,7 @@ include 'layout/header.php';
                                         <div class="file-name">
                                             Italy street.jpg
                                             <br/>
-                                            <small>Added: Jan 6, 2014</small>
+                                            <small>Added: mar 6, 2020</small>
                                         </div>
                                     </a>
                                 </div>
@@ -129,7 +129,7 @@ include 'layout/header.php';
                                         <div class="file-name">
                                             My feel.png
                                             <br/>
-                                            <small>Added: Jan 7, 2014</small>
+                                            <small>Added: mar 7, 2020</small>
                                         </div>
                                     </a>
                                 </div>
@@ -144,7 +144,7 @@ include 'layout/header.php';
                                 <button title="" data-placement="top" data-toggle="tooltip" data-original-title="Trash" class="btn btn-sm btn-white"><i class="fa fa-trash-o"></i> Remove</button>
                         </div>
                         <div class="clearfix"></div>
-                </div>
+                    </div>
             </div>
         </div>
         </div>

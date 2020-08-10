@@ -104,7 +104,7 @@
                     <h2>Basic Form</h2>
                     <ol class="breadcrumb">
                         <li>
-                            <a href="index-2.html">Home</a>
+                            <a href="<?=base_url('Student-Profile')?>">Home</a>
                         </li>
                         <li class="active">
                             <strong>update details</strong>

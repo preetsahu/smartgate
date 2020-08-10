@@ -50,7 +50,7 @@
 						<select name="regType" class="form-control" id="userType">
 						<option value="1">Staff</option>
 						<option value="2">Student</option>
-						<option value="<?=base_url('Register-Visitor')?>.id=3" url="index.php">Visitor</option>
+						<option value="3">Visitor</option>
 						</select>
 					</div>
 
@@ -123,7 +123,7 @@
 
 <!--===============================================================================================-->
 	<script src="<?=base_url()?>assets/user/vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script>
+	<!-- <script>
 	jQuery(function () {
     // remove the below comment in case you need chnage on document ready
     // location.href=jQuery("#selectbox").val(); 
@@ -131,7 +131,7 @@
         location.href = jQuery(this).val();
     })
 	})
-	</script>
+	</script> -->
 <!--===============================================================================================-->
 	<script src="<?=base_url()?>assets/user/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->

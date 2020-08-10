@@ -104,7 +104,7 @@
                     <h2>Basic Form</h2>
                     <ol class="breadcrumb">
                         <li>
-                            <a href="index-2.html">Home</a>
+                            <a href="<?=base_url('Staff-Profile')?>">Home</a>
                         </li>
                         <li class="active">
                             <strong>update details</strong>
@@ -226,7 +226,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
@@ -272,7 +272,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">

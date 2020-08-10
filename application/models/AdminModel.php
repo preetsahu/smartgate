@@ -201,7 +201,7 @@ class AdminModel extends CI_Model
 
     public function completeStudentActivityViewModel($str)
     {
-      $sql="SELECT pre.REGISTRATION_ID,st.STUDENT_ID,st.FIRST_NAME,st.LAST_NAME,st.EMAIL_ID,dt.DEPARTMENT_NAME,st.MOBILE_NUMBER ,pre.PRESENCE_STATUS,pre.IN_DATE_TIME,pre.OUT_DATE_TIME FROM `tblpeoplepresence` as pre INNER JOIN `tblstudent` st ON pre.REGISTRATION_ID=st.REGISTRATION_ID INNER JOIN `tbldepartment` dt ON st.DEPARTMENT_ID=dt.DEPARTMENT_ID INNER JOIN `registereduser` reguser ON reguser.REGISTRATION_ID=pre.REGISTRATION_ID WHERE st.STUDENT_ID='$str' or st.REGISTRATION_ID='$str';";
+      $sql="SELECT pre.REGISTRATION_ID,st.STUDENT_ID,st.FIRST_NAME,st.LAST_NAME,st.EMAIL_ID,dt.DEPARTMENT_NAME,st.MOBILE_NUMBER ,pre.PRESENCE_STATUS,pre.IN_DATE_TIME,pre.OUT_DATE_TIME FROM `tblpeoplepresence` as pre INNER JOIN `tblstudent` st ON pre.REGISTRATION_ID=st.REGISTRATION_ID INNER JOIN `tbldepartment` dt ON st.DEPARTMENT_ID=dt.DEPARTMENT_ID INNER JOIN `registereduser` reguser ON reguser.REGISTRATION_ID=pre.REGISTRATION_ID WHERE st.STUDENT_ID='$str' or st.REGISTRATION_ID='$str' order by pre.PRESENCE_STATUS ASC ";
       $rs=$this->db->query($sql);
       return $rs;
     }
@@ -231,6 +231,43 @@ class AdminModel extends CI_Model
       return  $rs->result();
     }
 
+    // ------------------
+
+    public function CountRegStudentModel()
+    {
+      $sql="SELECT COUNT(DISTINCT st.REGISTRATION_ID) as stuCount FROM `registereduser` st where REGISTRATION_TYPE='2';";
+      $rs=$this->db->query($sql);
+      return  $rs->result();
+    }
+
+    public function CountRegStaffModel()
+    {
+      $sql="SELECT COUNT(DISTINCT st.REGISTRATION_ID) as staffCount FROM `registereduser` st  WHERE REGISTRATION_TYPE='1';";
+      $rs=$this->db->query($sql);
+      return  $rs->result();
+    }
+
+    public function CountRegVisitorModel()
+    {
+      $sql="SELECT COUNT(DISTINCT `VISITOR_ID`) AS OtherCount FROM `tblvisitingdetails` VI INNER JOIN `tblvisitorcategories` CAT ON VI.CATEGORY_ID=CAT.CATEGORY_ID WHERE VI.CATEGORY_ID <> 'VICAT02';";
+      $rs=$this->db->query($sql);
+      return  $rs->result();
+    }
+
+    public function CountRegGaurdianModel()
+    {
+      $sql="SELECT COUNT(DISTINCT `VISITOR_ID`) AS OtherCount FROM `tblvisitingdetails` VI INNER JOIN `tblvisitorcategories` CAT ON VI.CATEGORY_ID=CAT.CATEGORY_ID WHERE VI.CATEGORY_ID == 'VICAT02';";
+      $rs=$this->db->query($sql);
+      return  $rs->result();
+    }
+    public function CountRegWorkersModel()
+    {
+      $sql="SELECT COUNT(DISTINCT `VISITOR_ID`) AS OtherCount FROM `tblvisitingdetails` VI INNER JOIN `tblvisitorcategories` CAT ON VI.CATEGORY_ID=CAT.CATEGORY_ID WHERE VI.CATEGORY_ID <> 'VICAT02' and VI.CATEGORY_ID <> 'VICAT01' and VI.CATEGORY_ID <> 'VICAT03';";
+      $rs=$this->db->query($sql);
+      return  $rs->result();
+    }
+
+    // ---------------------
     public function GetAdminModel()
     {
       $str=$this->input->post('str',TRUE);
