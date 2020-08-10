@@ -55,7 +55,7 @@
                         <div class="ibox-content">
                             <div class="row m-b-sm m-t-sm">
                                 <div class="col-md-12">
-                                    <div class="input-group"><input type="text" id="studentSearch" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
+                                    <div class="input-group"><input type="text" id="studentSearch" placeholder="Search By ID , Mobile Number ,Department or Name" class="input-sm form-control"> <span class="input-group-btn">
                                         <button type="button" class="btn btn-sm btn-success"> Go!</button> </span>
                                     </div>
                                 </div>

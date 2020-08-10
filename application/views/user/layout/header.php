@@ -131,7 +131,7 @@
                         <a href="#"><i class="fa fa-search"></i> <span class="nav-label">Staff</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                         
-                          <li><a href="<?= base_url('View-Staffs-Availibility') ?>"><i class="fa fa-user"></i>Staff Availibility</a></li>
+                          <li><a href="<?= base_url('Check-Staffs-Availibility') ?>"><i class="fa fa-user"></i>Staff Availibility</a></li>
                           <li><a href="<?= base_url('View-Faculties') ?>"><i class="fa fa-group"></i><span class="nav-label">Contact Faculties</span></a></li>
                         </ul>
                     </li>
@@ -143,8 +143,8 @@
                             
                             <a href="#"><i class="fa fa-search"></i> <span class="nav-label">Student</span><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
-                                <li><a href="<?= base_url('Look-Students') ?>"><i class="fa fa-user"></i>View Students</a></li>
-                                <li><a href="<?= base_url('View-Students-Availibility') ?>"><i class="fa fa-user"></i>Student Availibility</a></li>
+                                <li><a href="<?= base_url('Students') ?>"><i class="fa fa-user"></i>View Students</a></li>
+                                <li><a href="<?= base_url('Students-Availibility') ?>"><i class="fa fa-user"></i>Student Availibility</a></li>
                                 <<li><a href="<?= base_url('Contact-Students') ?>"><i class="fa fa-group"></i><span class="nav-label">Contact Students</span></a></li>
                             </ul>
                            

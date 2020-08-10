@@ -65,13 +65,13 @@ $route['Update-Student-Info']="userController/UserController/updateStudentInfo";
 $route['Update-Staff-Info']="userController/UserController/updateStaffInfo";
 $route['error']='userController/UserController/errorpage';
 
-$route['View-Staff']='userController/UserController/viewStaffpage';
-$route['View-Staffs-Availibility']='userController/UserController/availStaffpage';
+$route['Look-Staff']='userController/UserController/viewStaffpage';
+$route['Check-Staffs-Availibility']='userController/UserController/availStaffpage';
 
-$route['View-Students-Availibility']='userController/UserController/availStudentPage';
+$route['Students-Availibility']='userController/UserController/availStudentPage';
 $route['Student-Activity-View']='userController/UserController/studentActivityView';
 
-$route['Look-Students']='userController/UserController/viewStudentPage';
+$route['Students']='userController/UserController/viewStudentPage';
 ////////////////////////////////////////////---------end----------///////////////////////////////////////////////////////////
 /////////////////////////////////////////////--User Profile--///////////////////////////////////////////////////////////////
 

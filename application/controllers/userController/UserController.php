@@ -121,10 +121,19 @@ class UserController extends CI_Controller
         else
          redirect('User-Login-View');
     }
+
     public function availStudentPage()
     {
         if(isset($_SESSION['uMOB']))
         $this->load->view('user/studentAvailability');
+        else
+        $this->load->view('user/INDEX');
+        
+    }
+    public function viewStudentPage()
+    {
+        if(isset($_SESSION['uMOB']))
+        $this->load->view('user/StudentsSearch');
         else
         $this->load->view('user/INDEX');
         
@@ -147,14 +156,6 @@ class UserController extends CI_Controller
         // $this->session->set_userdata($str);
     }
 
-    public function viewStudentPage()
-    {
-        if(isset($_SESSION['EMAIL']))
-        $this->load->view('user/StudentsSearch');
-        else
-        $this->load->view('user/INDEX');
-        
-    }
 
     public function studentsView()
     {
